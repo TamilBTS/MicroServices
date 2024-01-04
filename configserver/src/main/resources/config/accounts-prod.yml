@@ -1,14 +1,8 @@
-spring:
-  config:
-    activate:
-      on-profile: "prod"
-
-
 build:
   version: "1.0"
 
-loans:
-  message: "Welcome to EazyBank loans related prod APIs "
+accounts:
+  message: "Welcome to EazyBank accounts related prod APIs "
   contactDetails:
     name: "Tamilarasi - Developer"
     email: "tamilarasi.srinivasan@outlook.com"

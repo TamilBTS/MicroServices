@@ -1,18 +1,11 @@
-spring:
-  config:
-    activate:
-      on-profile: "qa"
-
-
 build:
-  version: "2.0"
+  version: "3.0"
 
-cards:
-  message: "Welcome to EazyBank cards related local APIs "
+accounts:
+  message: "Welcome to EazyBank accounts related local APIs "
   contactDetails:
     name: "Tamilarasi - Developer"
     email: "tamilarasi.srinivasan@outlook.com"
   onCallSupport:
     - (91) 89407-73705
     - (555) 523-1345
-
