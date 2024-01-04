@@ -13,4 +13,5 @@ spring:
       server:
         native:
           search-locations:
-            - "classpath:/config"
+            - "file:///home//tamilarasi//Documents//config"
+            #classpath:/config
