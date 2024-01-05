@@ -7,11 +7,22 @@ spring:
     name: "configserver"
   profiles:
     active:
-      - native
+      - git
+#      - native
+
   cloud:
     config:
       server:
-        native:
-          search-locations:
-            - "file:///home//tamilarasi//Documents//config"
-            #classpath:/config
+        git:
+          uri: "https://github.com/TamilBTS/Config-Server.git"
+          clone-on-start: true
+          force-pull: true
+          timeout: 5
+          default-label: "main"
+#            - "file:///home//tamilarasi//Documents//config"
+#            - "classpath:/config"
+
+encrypt:
+  key: "14F5D1DE3E2B4D4971A4E353759AF"
+
+
