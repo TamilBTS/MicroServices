@@ -9,6 +9,11 @@ spring:
     active:
       - git
 #      - native
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
 
   cloud:
     config:
@@ -24,5 +29,20 @@ spring:
 
 encrypt:
   key: "14F5D1DE3E2B4D4971A4E353759AF"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
 
 
