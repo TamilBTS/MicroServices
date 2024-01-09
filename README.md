@@ -1,5 +1,8 @@
 **Microservices:**
 
+**Notes**
+  -- To connect to hookdeck CLI -> Go to /tmp folder and enter **hookdeck version** to confirm and then hookdeck login to login to the console (ps: I've moved the hookdeck folder to /opt/usr/local)
+
 **Commit Changes:**
 
 1. **_Before Cloud Config Server_** -> separate Configuration files for every microservices. All configurations are placed inside an application.yml files
