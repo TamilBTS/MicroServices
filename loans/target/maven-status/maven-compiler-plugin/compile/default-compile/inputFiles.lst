@@ -4,6 +4,7 @@
 /home/tamilarasi/Java/Microservices/loans/src/main/java/com/eazybytes/loans/constants/LoansConstants.java
 /home/tamilarasi/Java/Microservices/loans/src/main/java/com/eazybytes/loans/entity/BaseEntity.java
 /home/tamilarasi/Java/Microservices/loans/src/main/java/com/eazybytes/loans/service/impl/LoansServiceImpl.java
+/home/tamilarasi/Java/Microservices/loans/src/main/java/com/eazybytes/loans/dto/LoansContactInfoDto.java
 /home/tamilarasi/Java/Microservices/loans/src/main/java/com/eazybytes/loans/LoansApplication.java
 /home/tamilarasi/Java/Microservices/loans/src/main/java/com/eazybytes/loans/mapper/LoansMapper.java
 /home/tamilarasi/Java/Microservices/loans/src/main/java/com/eazybytes/loans/exception/GlobalExceptionHandler.java
