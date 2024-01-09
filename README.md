@@ -1,7 +1,8 @@
 **Microservices:**
 
 **Notes**
-  -- To connect to hookdeck CLI -> Go to /tmp folder and enter **hookdeck version** to confirm and then hookdeck login to login to the console (ps: I've moved the hookdeck folder to /opt/usr/local)
+  -- To connect to hookdeck CLI -> Go to /tmp folder and enter **hookdeck version** to confirm and then **hookdeck login** to login to the console (ps: I've moved the hookdeck folder to /opt/usr/local)
+  -- hookdeck's URL -> https://console.hookdeck.com/
 
 **Commit Changes:**
 
