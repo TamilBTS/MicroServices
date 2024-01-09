@@ -21,5 +21,8 @@ We need to restart the bus in that particular microservice. So we can dynamicall
    Created docker images and pushed them through the docker hub.
    
 8. **_Updating Common Config for RabbitMq_** -> I've updated the rabbitmq host from localhost to rabbit container using environment variables. Also added **Webhook** for config-server in GitHub using **hook deck** console.
-   Login to hook deck console and forward requests to _/monitor_ and also connection label as _localhost_. So whenever you commit changes in GitHub it'll forward the request to localhost using webhook. SO when we refresh the bus
+   Login to hook deck console and forward requests to _/monitor_ and also connection label as _localhost_. So whenever you commit changes in GitHub it'll forward the request to localhost using webhook. So when we refresh the bus
    the configuration changes will be updated.
+
+9. **_Updating Cloud Config Monitor for RabbitMq_** -> I've added two dependencies cloud-config-monitor and cloud-starter-bus-ampq for enabling **/monitor** endpoint for auto-refresh configuration using webhook. Also when enabling webhook
+    make sure to give **application/json** as the request body to send a request to web hook
