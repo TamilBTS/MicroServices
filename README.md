@@ -13,6 +13,9 @@ Also, I've moved all configuration properties into my configuration server. We c
 We need to restart the bus in that particular microservice. So we can dynamically change the properties without restarting microservices.
 
 5. **_After Bus Refresh Properties System_** -> I've used "**RabbitMQ**" for refreshing the properties file for all microservices if you refresh in any one of the services.
- I've installed and run the rabbitMQ inside docker in port _5672_. So using this rabbitMQ, if we refresh the bus in any of the microservices all microservices will be refreshed.
+ I've installed and run the rabbitMQ inside docker in port _5672_. So using this rabbitMQ, all **microservices will be refreshed** if we refresh the bus in any of the microservices.
 
 6. **_Docker for ConfigServer and Rabbitmq_** -> Started writing docker-compose.yml for config server and rabbitmq in the project. Added docker-compose folder for different environment configurations.
+  
+7. **_Updating DockerCompose Configuration_** -> I've updated the **docker-compose.yml** file and added a **common-config.yml** file for common configurations and environmental variables.
+   Created docker images and pushed them through the docker hub.
