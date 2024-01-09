@@ -13,9 +13,13 @@ Also, I've moved all configuration properties into my configuration server. We c
 We need to restart the bus in that particular microservice. So we can dynamically change the properties without restarting microservices.
 
 5. **_After Bus Refresh Properties System_** -> I've used "**RabbitMQ**" for refreshing the properties file for all microservices if you refresh in any one of the services.
- I've installed and run the rabbitMQ inside docker in port _5672_. So using this rabbitMQ, all **microservices will be refreshed** if we refresh the bus in any of the microservices.
+ I've installed and run the rabbitMQ inside docker in port _5672_. So using this rabbitMQ, all **microservices will be refreshed** if we refresh the bus in any microservices.
 
 6. **_Docker for ConfigServer and Rabbitmq_** -> Started writing docker-compose.yml for config server and rabbitmq in the project. Added docker-compose folder for different environment configurations.
   
 7. **_Updating DockerCompose Configuration_** -> I've updated the **docker-compose.yml** file and added a **common-config.yml** file for common configurations and environmental variables.
    Created docker images and pushed them through the docker hub.
+   
+8. **_Updating Common Config for RabbitMq_** -> I've updated the rabbitmq host from localhost to rabbit container using environment variables. Also added **Webhook** for config-server in GitHub using **hook deck** console.
+   Login to hook deck console and forward requests to _/monitor_ and also connection label as _localhost_. So whenever you commit changes in GitHub it'll forward the request to localhost using webhook. SO when we refresh the bus
+   the configuration changes will be updated.
