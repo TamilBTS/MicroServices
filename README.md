@@ -1,5 +1,9 @@
 **Microservices:**
 
+**Notes**
+  -- To connect to hookdeck CLI -> Go to /tmp folder and enter **hookdeck version** to confirm and then **hookdeck login** to login to the console (ps: I've moved the hookdeck folder to /opt/usr/local)
+  -- hookdeck's URL -> https://console.hookdeck.com/
+
 **Commit Changes:**
 
 1. **_Before Cloud Config Server_** -> separate Configuration files for every microservices. All configurations are placed inside an application.yml files
@@ -25,4 +29,6 @@ We need to restart the bus in that particular microservice. So we can dynamicall
    the configuration changes will be updated.
 
 9. **_Updating Cloud Config Monitor for RabbitMq_** -> I've added two dependencies cloud-config-monitor and cloud-starter-bus-ampq for enabling **/monitor** endpoint for auto-refresh configuration using webhook. Also when enabling webhook
-    make sure to give **application/json** as the request body to send a request to web hook
+    make sure to give **application/json** as the request body to send a request to webhook.
+   
+10. **_Updating Docker-Compose for other files_** -> I've updated the docker-compose file for prod and qa profiles. Changed the common config.yml _spring.profiles.active as prod and qa_ for their respective profiles. 
