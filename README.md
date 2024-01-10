@@ -17,7 +17,7 @@ Also, I've moved all configuration properties into my configuration server. We c
 We need to restart the bus in that particular microservice. So we can dynamically change the properties without restarting microservices.
 
 5. **_After Bus Refresh Properties System_** -> I've used "**RabbitMQ**" for refreshing the properties file for all microservices if you refresh in any one of the services.
- I've installed and run the rabbitMQ inside docker in port _5672_. So using this rabbitMQ, all **microservices will be refreshed** if we refresh the bus in any microservices.
+ I've installed and run the rabbitMQ inside docker in port **_5672_**. So using this rabbitMQ, all **microservices will be refreshed** if we refresh the bus in any microservices.
 
 6. **_Docker for ConfigServer and Rabbitmq_** -> Started writing docker-compose.yml for config server and rabbitmq in the project. Added docker-compose folder for different environment configurations.
   
@@ -31,4 +31,7 @@ We need to restart the bus in that particular microservice. So we can dynamicall
 9. **_Updating Cloud Config Monitor for RabbitMq_** -> I've added two dependencies cloud-config-monitor and cloud-starter-bus-ampq for enabling **/monitor** endpoint for auto-refresh configuration using webhook. Also when enabling webhook
     make sure to give **application/json** as the request body to send a request to webhook.
    
-10. **_Updating Docker-Compose for other files_** -> I've updated the docker-compose file for prod and qa profiles. Changed the common config.yml _spring.profiles.active as prod and qa_ for their respective profiles. 
+10. **_Updating Docker-Compose for other files_** -> I've updated the docker-compose file for prod and qa profiles. Changed the common config.yml _**spring.profiles.active as prod and qa**_ for their respective profiles
+  
+11. **_Configuration for MySql Database with Docker_** -> I've shifted from the H2 database to the MySql database and configured the MySQL services in the **_docker-compose.yml_** file. For each Microservices I've configured seperate
+    MySQL containers exposing **3306, 3307, and 3308** ports under the same network for inter-communications.  
