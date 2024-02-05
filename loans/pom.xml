@@ -70,6 +70,10 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
 
 	</dependencies>
 	<dependencyManagement>
@@ -106,7 +110,7 @@
 				<version>3.4.0</version>
 				<configuration>
 					<to>
-						<image>tamilarasi1319/${project.artifactId}:s7</image>
+						<image>tamilarasi1319/${project.artifactId}:s8</image>
 					</to>
 				</configuration>
 			</plugin>

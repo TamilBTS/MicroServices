@@ -46,7 +46,7 @@ services:
       file: common-config.yml
 
   configserver:
-    image: "tamilarasi1319/configserver:s7"
+    image: "tamilarasi1319/configserver:s8"
     container_name: "configserver-ms"
     ports:
       - "8071:8071"
@@ -65,15 +65,34 @@ services:
     environment:
       SPRING_APPLICATION_NAME: config-server
 
+  eurekaserver:
+    image: "tamilarasi1319/eurekaserver:s8"
+    container_name: "eurekaserver-ms"
+    ports:
+      - "8070:8070"
+    healthcheck:
+      test: "curl --fail --silent localhost:8070/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    depends_on:
+      rabbit:
+        condition: service_healthy
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+    environment:
+      SPRING_APPLICATION_NAME: eurekaserver
 
   accounts:
-    image: "tamilarasi1319/accounts:s7"
+    image: "tamilarasi1319/accounts:s8"
     container_name: "accounts-ms"
     ports:
       - "8080:8080"
     extends:
       file: common-config.yml
-      service: microservice-configserver-config
+      service: microservice-eurekaserver-config
     environment:
       SPRING_APPLICATION_NAME: accounts
       SPRING_DATASOURCE_URL: "jdbc:mysql://accountsdb:3306/accountsdb"
@@ -82,13 +101,13 @@ services:
 
 
   loans:
-    image: "tamilarasi1319/loans:s7"
+    image: "tamilarasi1319/loans:s8"
     container_name: "loans-ms"
     ports:
       - "8090:8090"
     extends:
       file: common-config.yml
-      service: microservice-configserver-config
+      service: microservice-eurekaserver-config
     environment:
       SPRING_APPLICATION_NAME: loans
       SPRING_DATASOURCE_URL: "jdbc:mysql://loansdb:3306/loansdb"
@@ -98,13 +117,13 @@ services:
 
 
   cards:
-    image: "tamilarasi1319/cards:s7"
+    image: "tamilarasi1319/cards:s8"
     container_name: "cards-ms"
     ports:
       - "9000:9000"
     extends:
       file: common-config.yml
-      service: microservice-configserver-config
+      service: microservice-eurekaserver-config
     environment:
       SPRING_APPLICATION_NAME: cards
       SPRING_DATASOURCE_URL: "jdbc:mysql://cardsdb:3306/cardsdb"
