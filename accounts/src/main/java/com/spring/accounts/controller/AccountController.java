@@ -6,6 +6,8 @@ import com.spring.accounts.dto.CustomerDto;
 import com.spring.accounts.dto.ErrorResponseDto;
 import com.spring.accounts.dto.ResponseDto;
 import com.spring.accounts.service.IAccountService;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
+import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -15,6 +17,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -24,7 +27,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.TimeoutException;
+
 @RestController
+@Log4j2
 @RequestMapping(path = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 @Validated
 @Tag(name = "CRUD REST APIs for Accounts", description = "CRUD REST APIs in EazyBank to CREATE, UPDATE, FETCH AND DELETE account details")
@@ -64,8 +70,16 @@ public class AccountController {
     }
     )
     @GetMapping("/build-info")
-    public ResponseEntity<String> getBuildInfo() {
+    @Retry(name = "getBuildInfo", fallbackMethod = "getBuildInfoFallback")
+    public ResponseEntity<String> getBuildInfo()  {
+        log.info("GetBuildInfo");
+//        throw new TimeoutException();
         return ResponseEntity.status(HttpStatus.OK).body(buildVersion);
+    }
+
+    public ResponseEntity<String> getBuildInfoFallback(Throwable throwable) {
+        log.info("GetBuildInfoFallback");
+        return ResponseEntity.status(HttpStatus.OK).body("0.1");
     }
 
     @Operation(
@@ -92,7 +106,6 @@ public class AccountController {
     }
 
 
-
     @Operation(
             summary = "Get Java version REST API",
             description = "REST API to get the java version on accounts microservice"
@@ -111,9 +124,14 @@ public class AccountController {
             )
     }
     )
+    @RateLimiter(name = "getJavaVersion", fallbackMethod = "getJavaVersionFallBack")
     @GetMapping("/java-version")
     public ResponseEntity<String> getJavaVersion() {
         return ResponseEntity.status(HttpStatus.OK).body(environment.getProperty("MAVEN_HOME"));
+    }
+
+    public ResponseEntity<String> getJavaVersionFallBack(Throwable throwable) {
+        return ResponseEntity.status(HttpStatus.OK).body("Default JAVA Version 17");
     }
 
 

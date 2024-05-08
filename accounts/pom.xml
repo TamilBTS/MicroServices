@@ -48,6 +48,11 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
@@ -77,6 +82,10 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
 		</dependency>
 
 	</dependencies>
@@ -112,7 +121,7 @@
 				<version>3.4.0</version>
 				<configuration>
 					<to>
-						<image>tamilarasi1319/${project.artifactId}:s8</image>
+						<image>tamilarasi1319/${project.artifactId}:s10</image>
 					</to>
 				</configuration>
 			</plugin>

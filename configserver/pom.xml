@@ -87,7 +87,7 @@
 				<version>3.4.0</version>
 				<configuration>
 					<to>
-						<image>tamilarasi1319/${project.artifactId}:s8</image>
+						<image>tamilarasi1319/${project.artifactId}:s10</image>
 					</to>
 				</configuration>
 			</plugin>

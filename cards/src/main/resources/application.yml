@@ -7,9 +7,9 @@ spring:
     active:
       - "prod"
   datasource:
-    url: jdbc:mysql://localhost:3308/cardsdb
-    username: root
-    password: 1234
+    url: jdbc:h2:mem:cardsdb
+    username: sa
+    password: password
   jpa:
     hibernate:
       ddl-auto: update
@@ -50,10 +50,24 @@ management:
   info:
     env:
       enabled: true
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
   endpoint:
+    health:
+      probes:
+        enabled: true
     shutdown:
       enabled: true
   endpoints:
     web:
       exposure:
         include: "*"
+
+logging:
+  level:
+    com:
+      spring:
+        cards: DEBUG
